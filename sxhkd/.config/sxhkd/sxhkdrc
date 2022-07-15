@@ -13,7 +13,7 @@ XF86AudioMute
         pactl set-sink-mute 0 toggle
 # terminal emulator
 super + Return
-    alacritty
+   alacritty
 
 # program launcher
 super + @space
