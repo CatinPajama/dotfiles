@@ -135,7 +135,7 @@ super + {Left,Down,Up,Right}
     scrot ~/Pictures/Screenshots/%Y-%m-%d_%H$M%S.png
 
 shift + @Print
-    scrot -s --line mode=edge -s ~/Pictures/Screenshots/%Y-%m-%d_%H$M%S.png  -e 'xclip -selection clipboard -target image/png -i $f'
+    scrot -s --line mode=edge -s /tmp/%Y-%m-%d_%H$M%S.png  -e 'xclip -selection clipboard -target image/png -i $f'
 
 super + e
     mupdf ~/study/time_table.pdf

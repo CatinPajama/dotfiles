@@ -374,13 +374,13 @@ colors: *tokyonight
 font:
   size: 7
   normal:
-    family: DejaVuSansMono NF
-    style: Book
+    family: Liga SFMono Nerd Font
+    style: Regular
   bold:
-    family: DejaVuSansMono NF
+    family: Liga SFMono Nerd Font
     style: bold
   italic:
-    family: DejaVuSansMono NF
+    family: Liga SFMono Nerd Font
     style: italic
 
 draw_bold_text_with_bright_colors: true

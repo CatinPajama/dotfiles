@@ -25,4 +25,6 @@ export PATH="${PATH}:${HOME}/.local/bin/"
 alias build='~/scripts/build'
 alias ls="exa"
 path+=('/home/gorob/.cargo/bin')
+path+=('/home/gorob/scripts')
 export PATH
+alias icat="kitty +kitten icat"
