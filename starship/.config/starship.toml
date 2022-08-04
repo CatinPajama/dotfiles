@@ -19,7 +19,7 @@ style = "italic fg:#81D6E9"
 [cmd_duration]
 min_time = 4
 show_milliseconds = false
-disabled = false
+disabled = true
 style = "bold italic purple"
 
 [aws]

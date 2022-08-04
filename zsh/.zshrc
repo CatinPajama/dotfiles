@@ -26,5 +26,6 @@ alias build='~/scripts/build'
 alias ls="exa"
 path+=('/home/gorob/.cargo/bin')
 path+=('/home/gorob/scripts')
+path+=('/home/gorob/.spicetify')
 export PATH
 alias icat="kitty +kitten icat"

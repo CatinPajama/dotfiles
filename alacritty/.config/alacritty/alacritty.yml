@@ -374,7 +374,7 @@ colors: *tokyonight
 font:
   size: 7
   normal:
-    family: Liga SFMono Nerd Font
+    family: Roboto Mono Nerd Font
     style: Regular
   bold:
     family: Liga SFMono Nerd Font

@@ -6,9 +6,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 ~/.config/polybar/launch.sh &
 #kitty -e vim ~/study/revise.md +Goyo &
 #bspc monitor -d I II III IV V VI VII VIII IX X
-bspc monitor -d 1 2 3 4
+bspc monitor -d 1 2 3 4 5
 
-bspc config border_width         3
+bspc config border_width         1
 bspc config window_gap          35
 bspc config top_padding         45
 bspc config split_ratio          0.55
@@ -32,5 +32,7 @@ bspc config presel_feedback_color "$color1"
 bspc rule -a discord desktop=^4
 bspc rule -a spotify desktop=^3
 bspc rule -a firefox desktop=^1
+bspc rule -a mpv desktop=^2
 bspc rule -a Code desktop=^2
 bspc rule -a Emacs state=tiled
+
