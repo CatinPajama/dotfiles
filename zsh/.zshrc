@@ -14,18 +14,16 @@ compinit
 eval "$(starship init zsh)"
 
 #export PATH=$PATH:/home/gorob/.spicetify
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 # (cat ~/.cache/wal/sequences &)
 # Import the colors.
-. "${HOME}/.cache/wal/colors.sh"
 
 # Create the alias.
 alias dmen='dmenu_run -nb "$color0" -nf "$color15" -sb "$color1" -sf "$color15"'
 export PATH="${PATH}:${HOME}/.local/bin/"
 alias build='~/scripts/build'
-alias ls="exa"
+#alias ls="exa"
 path+=('/home/gorob/.cargo/bin')
 path+=('/home/gorob/scripts')
-path+=('/home/gorob/.spicetify')
 export PATH
 alias icat="kitty +kitten icat"

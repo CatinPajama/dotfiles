@@ -1,10 +1,10 @@
 configuration{
-    modi: "run,drun,window,file-browser-extended";
+    modi: "run,drun,window";
     lines: 5;
-    font: "Monospace 14";
+    font: "Terminus 12";
     show-icons: true;
     icon-theme: "Oranchelo";
-    terminal: "kitty";
+    terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -25,7 +25,7 @@ element-text, element-icon , mode-switcher {
 
 window {
     height: 360px;
-    border: 3px;
+    border: 0px;
     border-color: @border-col;
     background-color: @bg-col;
 }
@@ -100,3 +100,4 @@ button selected {
   background-color: @bg-col;
   text-color: @blue;
 }
+
