@@ -1,14 +1,14 @@
 * {
 	border: none;
-	font-family: "IBM Plex Mono", "Roboto Mono Nerd Font";
+	font-family: "Roboto Mono Nerd Font";
 	font-size: 13px;
 	min-height: 0;
-	color: #ffffff;
+	color: #c9c6c8;
 	background: #1a1b26;
 }
 
 #network, #battery, #clock, #tray, #pulseaudio, #workspaces, #media {
 	
-	padding : 0 5px;
+	padding : 0 8px;
 
 }

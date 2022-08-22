@@ -27,3 +27,4 @@ path+=('/home/gorob/.cargo/bin')
 path+=('/home/gorob/scripts')
 export PATH
 alias icat="kitty +kitten icat"
+krabby random 1,2,3,4 --no-title

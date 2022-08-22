@@ -2,10 +2,10 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 15, // Waybar height (to be removed for auto height)
     "width": 1920, // Waybar width
-    "spacing": 3, // Gaps between modules (4px)
+    "spacing": 4, // Gaps between modules (4px)
     "modules-left": ["wlr/workspaces", "sway/mode", "custom/media"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "battery", "clock", "tray"],
+    "modules-right": ["pulseaudio", "battery","network", "clock", "tray","memory"],
     "margin-left" : 5,
     "margin-right" : 5,
     "margin-top" : 0,
@@ -114,7 +114,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{icon} {capacity}%",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
@@ -127,7 +127,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{essid} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
