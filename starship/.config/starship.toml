@@ -4,17 +4,22 @@
 #[┣─project❯](bold red) $directory$rust$git_branch$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
 #[╰─cmd────❯](bold green) 
 #"""
+format = """
+$directory$rust$git_branch$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
+$character 
+
+"""
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[➜ ](fg:purple)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-error_symbol = "[✗](bold red)"
+success_symbol = "[](fg:blue)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗](bold fg:#ffab91)"
 #  
 # configure directory
 [directory]
 read_only = " "
 truncation_length = 10
-truncate_to_repo = true # truncates directory to root folder if in github repo
-style = "italic fg:blue"
+truncate_to_repo = false # truncates directory to root folder if in github repo
+style = "fg:#673ab7"
 
 [cmd_duration]
 min_time = 4
@@ -96,7 +101,7 @@ version_format = "v${raw}"
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "🦀 "
 
 [scala]
 symbol = " "
@@ -111,3 +116,7 @@ symbol = "ﯣ "
 format = "via [ Node.js $version](bold green) "
 detect_files = ["package.json", ".node-version"]
 detect_folders = ["node_modules"]
+
+
+[line_break]
+disabled = true
