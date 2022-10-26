@@ -10,8 +10,8 @@ compinit
 eval "$(starship init zsh)"
 
 export PATH="${PATH}:${HOME}/.local/bin/"
-alias build='~/scripts/build'
-alias ls="exa"
-path+=('/home/gorob/.cargo/bin')
-path+=('/home/gorob/scripts')
+alias ls="exa --icons"
+path+=('/home/gaurab/.cargo/bin')
+path+=('/home/gaurab/scripts')
+path+=('/home/gaurab/.spicetify')
 export PATH

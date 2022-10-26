@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm'
 
-local carbonfox_light = wezterm.color.get_builtin_schemes()['carbonfox']
+local carbonfox_light = wezterm.color.get_builtin_schemes()['Pasque (base16)']
 
 
 carbonfox_light.background = "#ffffff"
@@ -13,7 +13,7 @@ return {
   font = wezterm.font 'RobotoMono Nerd Font',
   font_size = 14,
   window_padding = {
-    left = 15,
+    left = 20,
     right = 24,
     top = 6,
     bottom = 24,
@@ -22,5 +22,7 @@ return {
   color_schemes = {
     ['carbonfox light'] = carbonfox_light
   },
-  color_scheme = "carbonfox light"
+  color_scheme = "carbonfox light",
+
+
 }

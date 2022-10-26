@@ -1,17 +1,16 @@
 {
-    "layer": "bottom", // Waybar at top layer
+    "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 50, // Waybar height (to be removed for auto height)
+    "height": 60, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     // "margin-left":25,
     // "margin-right":25,
     "margin-bottom":-11,
-    //"margin-top":5,
+    "margin-top": 10,
     "modules-left": ["wlr/workspaces"],
-    "modules-center" : ["clock"],
-    "modules-right": ["custom/media","network","battery","pulseaudio","clock"],
+    "modules-right": ["custom/media","network","battery","pulseaudio","clock","tray"],
     //"modules-center": ["custom/dynamic_pill"],
     // Modules configuration
 
@@ -187,6 +186,8 @@
         "format": "{icon} {}",
         "return-type": "json",
         "max-length": 40,
+        "on-click" : "playerctl -p spotify play-pause",
+        "on-click-right" : "playerctl -p spotify next",
         "format-icons": {
             "spotify": "",
             "default": "🎜"

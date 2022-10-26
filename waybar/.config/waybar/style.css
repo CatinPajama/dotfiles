@@ -1,6 +1,6 @@
 * {
-    font-family: "IBM Plex Sans","RobotoMono Nerd Font";
-    font-size: 14px;
+    font-family: "Work Sans","RobotoMono Nerd Font";
+    font-size: 16px;
 }
 
 window#waybar {
@@ -17,26 +17,28 @@ window#waybar {
 #workspaces button{
     box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
     background-color: #fff ;
-    border-radius: 15px;
+    border-radius: 55px;
     margin-right: 10px;
     padding-top: 4px;
     padding-bottom: 2px;
-    padding-right: 10px;
+    padding-right: 15px;
+    padding-left : 15px;
     font-weight: bolder;
     color: 	#cba6f7 ;
 }
 
 #workspaces button.active{
-    padding-right: 15px;
+    padding-right: 23px;
     box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-    padding-left: 15px;
+    padding-left: 23px;
     padding-bottom: 3px;
     background: rgb(202,158,230);
     background: linear-gradient(45deg, rgba(202,158,230,1) 0%, rgba(245,194,231,1) 43%, rgba(180,190,254,1) 80%, rgba(137,180,250,1) 100%); 
     background-size: 300% 300%;
     animation: gradient 10s ease infinite;
     color: #fff;
+    border-radius: 55px;
 }
 
 @keyframes gradient {
