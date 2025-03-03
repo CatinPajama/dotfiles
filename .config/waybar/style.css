@@ -1,0 +1,188 @@
+@import "colors-waybar.css";
+*{
+	all: unset;
+	font-family: "Symbols Nerd Font", "Product Sans";
+}
+	
+window#waybar {
+	background: @overlay1;
+	/*background: #181926;*/
+	color:  @foreground;
+	/*color : #cdd6f4;*/
+	font-size: 10px;
+	font-weight : 600;
+}
+
+#workspaces {
+	margin: 0.3rem 0 0.3rem 0;
+	font-weight: bold;
+}
+
+
+	   
+#workspaces button {
+	/*color: #c0caf5;*/
+	background-color: @overlay3;
+	/*background-color: #1e2030;*/
+	/*border: 1.5px #c0caf5 solid;*/
+   	border-radius: 8px;
+   	padding : 0.3rem 1rem 0.3rem 1rem;
+	margin-right : 8px;
+}
+   
+#workspaces button.active {
+	border: 1px @foreground solid;
+   	/*border-radius: 15px 15px 15px 15px;*/
+	color : @foreground;
+	/*color : #f38ba8;*/
+}
+ 
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#power-profiles-daemon,
+#pulseaudio,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#custom-cycle_wall,
+#custom-keyboard,
+#custom-light_dark,
+#custom-lock,
+#custom-menu,
+#network,
+#custom-power_vertical,
+#custom-power,
+#custom-swaync,
+#custom-spotify,
+#custom-updater,
+#custom-weather,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.default 
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.severe,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.sunnyDay {
+   	padding : 0.3rem 1rem 0.3rem 1rem;
+	background-color: @overlay3;
+	/*background-color: #1e2030;*/
+   	border-radius: 8px;
+	margin: 0.4rem 0 0.4rem 0;
+}
+	 
+#temperature.critical {
+	background-color: #ff0000;
+}
+   
+@keyframes blink {
+	to {
+	color: rgb(225, 225, 225);
+	   }
+}
+#taskbar button:hover {
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+   
+#taskbar button.active {
+	background-color: #7f849c;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+   
+#battery.critical:not(.charging) {
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#battery.warning:not(.charging) {
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+
+
+#pulseaudio-slider slider {
+	min-width: 0px;
+	min-height: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+	min-width: 80px;  
+	min-height: 10px; 
+	border-radius: 5px;
+	background-color: rgb(225, 225, 225);
+}
+
+#pulseaudio-slider highlight {
+	min-height: 10px; 
+	border-radius: 5px;
+	background-color: wheat;
+}
+
+#backlight-slider slider {
+	min-width: 0px;
+	min-height: 0px;
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+#backlight-slider trough {
+	min-width: 80px;  
+	min-height: 10px;
+	border-radius: 5px;
+	background-color: rgb(225, 225, 225);
+}
+
+#backlight-slider highlight {
+	min-width: 10px; 
+	border-radius: 5px;
+	background-color: wheat;
+}
+
+#clock {
+	border: 1px #c0caf5 solid;
+}
+
+#custom-menu {
+	margin-left : 0px;
+	/*border: 1px #c0caf5 solid;*/
+   	padding : 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+
+
+#custom-swaync {
+	font-weight: bold;
+	margin-right : 5px;
+}
+
+#custom-lock {
+	font-weight: bold;
+	margin-left : 5;
+}
