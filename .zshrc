@@ -24,7 +24,7 @@ clear() {
 }
 
 
-alias ls="exa --icons"
+alias ls="eza --icons"
 
 eval "$(starship init zsh)"
 

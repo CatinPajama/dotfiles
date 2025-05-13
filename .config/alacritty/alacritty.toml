@@ -1,0 +1,42 @@
+[general]
+import = [
+    "~/.config/alacritty/kanagawa_dragon.toml"
+]
+
+[font]
+size = 9
+
+
+[font.offset]
+y = 4
+
+[font.normal]
+family = "Liga SFMono Nerd Font"
+style = "Light"
+
+[font.bold]
+family = "Liga SFMono Nerd Font"
+style = "Regular"
+
+
+[font.italic]
+family = "Operator Mono"
+style = "Book Italic"
+
+
+
+
+
+
+
+[window]
+opacity = 1
+dynamic_padding = true
+decorations = 'Transparent'
+
+[window.padding]
+x = 10
+y = 10
+
+[env]
+term = "xterm-256color"
