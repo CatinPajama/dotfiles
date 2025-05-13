@@ -15,26 +15,14 @@ n      (bootstrap-version 5))
 n      (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
 
-(setq gc-cons-threshold 1600000)
-
-(setq custom-safe-themes t)
-
+(setq visible-bell t)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
-
-(use-package benchmark-init
-  :ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 
 ;(unless (package-installed-p 'use-package)
@@ -44,84 +32,27 @@ n      (eval-print-last-sexp)))
 
 ;(setq use-package-always-ensure t)
 
-(set-face-attribute 'default nil :font "Iosevka SS07" :height 120 :weight 'light)
-;(set-face-attribute 'line-number nil :family "JetBrains Mono" :height 40)
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(set-face-attribute 'default nil :font "Iosevka SS07" :height 180 :weight 'regular)
+;;(set-face-attribute 'line-number nil :family "JetBrains Mono" :height 40)
+;(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 
 
-;(use-package solo-jazz-theme
-; :straight t
-; :config
+(use-package solo-jazz-theme
+ :straight t
+ :config
 ; (load-theme 'solo-jazz t)
-; )
+ )
 
 (use-package completion-preview
   :hook (prog-mode . completion-preview-mode))
 
 ;; like reverrie and dream
-;(use-package ef-themes
-;  :straight t
- ; :config
-;  (load-theme 'ef-reverie t)
-;  )
-
-
-(use-package lambda-line
-  :straight (:type git :host github :repo "lambda-emacs/lambda-line") 
-  :custom
-  (lambda-line-icon-time t) ;; requires ClockFace font (see below)
-  (lambda-line-clockface-update-fontset "ClockFaceRect") ;; set clock icon
-  (lambda-line-position 'top) ;; Set position of status-line 
-  (lambda-line-abbrev t) ;; abbreviate major modes
-  (lambda-line-hspace "  ")  ;; add some cushion
-  (lambda-line-prefix t) ;; use a prefix symbol
-  (lambda-line-prefix-padding nil) ;; no extra space for prefix 
-  (lambda-line-status-invert nil)  ;; no invert colors
-  (lambda-line-gui-ro-symbol  " ⨂") ;; symbols
-  (lambda-line-gui-mod-symbol " ⬤") 
-  (lambda-line-gui-rw-symbol  " ◯") 
-  (lambda-line-space-top +.10)  ;; padding on top and bottom of line
-  (lambda-line-space-bottom -.10)
-  (lambda-line-symbol-position 0.1) ;; adjust the vertical placement of symbol
+(use-package ef-themes
+  :straight t
   :config
-  ;; activate lambda-line 
-
-  (lambda-line-mode)
-(setq visible-bell nil)
-(setq ring-bell-function 'ignore)
-  (set-face-attribute 'lambda-line-active-name nil :height 50 :family "JetBrains Mono")
-;     (set-face-attribute 'lambda-line-active-name nil :height 50 :family "JetBrains Mono")
-  ;; set divider line in footer
-  (when (eq lambda-line-position 'top)
-    (setq-default mode-line-format (list "%_"))
-    (setq mode-line-format (list "%_"))))
-
-
-(use-package lambda-themes
-  :straight (:type git :host github :repo "lambda-emacs/lambda-themes") 
-  :custom
-  (lambda-themes-set-italic-comments t)
-  (lambda-themes-set-italic-keywords t)
-  (lambda-themes-set-variable-pitch t) 
-  :config
-  ;; load preferred theme 
-  (load-theme 'lambda-light)
-
-    (with-eval-after-load 'lambda-line
-  (mapc (lambda (face)
-          (when (string-prefix-p "lambda-line-" (symbol-name face))
-            (set-face-attribute face nil :height 120)))
-        (face-list)))
-
-
-
-
-;(set-face-attribute 'line-number nil :height 80 :family "Roboto Mono")
-;(set-face-attribute 'line-number-current-line nil :height 80 :family "Roboto Mono")
-
-
-)
+  (load-theme 'ef-reverie t)
+  )
 
 (use-package dashboard
   :ensure t
@@ -132,6 +63,12 @@ n      (eval-print-last-sexp)))
    )
   (dashboard-setup-startup-hook))
 
+(use-package timu-rouge-theme
+  :straight t
+  :config
+					;(load-theme 'timu-rouge t)
+  )
+
 (use-package tree-sitter
 ;  (global-tree-sitter-mode)
 ;  :hook
@@ -140,56 +77,27 @@ n      (eval-print-last-sexp)))
  ; (global-tree-sitter-mode)
   )
 
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (typst-ts-mode . lsp))
-         ;; if you want which-key integration
-         ;(lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
-  :config
-  (setq lsp-headerline-breadcrumb-enable nil))
-
-(use-package lsp-ui :commands lsp-ui-mode)
-
-(use-package company
-  :hook (lsp-mode . company-mode)
-  )
-
 (use-package typst-ts-mode
-  :after (lsp-mode)
   :straight (:type git :host sourcehut :repo "meow_king/typst-ts-mode")
   :custom
-  (typst-ts-mode-watch-options "--open")
-  :config  
-  (with-eval-after-load 'lsp-mode
-    (add-to-list 'lsp-language-id-configuration
-		 '(typst-ts-mode . "typst"))
-
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection typst-ts-lsp-download-path)
-                      :activation-fn (lsp-activate-on "typst")
-                      :server-id 'typst)))
-
-
-  )
+  (typst-ts-mode-watch-options "--open"))
 (use-package tree-sitter-langs)
 
 
 (use-package pdf-tools
-  :defer t
   :straight t
-  :commands (pdf-loader-install)
-  :mode "\\.pdf\\"
-  :init (pdf-loader-install)
   :config
-					;  (pdf-loader-install)
-  (add-hook 'pdf-view-mode-hook #'(lambda () (interactive) (display-line-numbers-mode -1)))
   (add-hook 'pdf-view-mode-hook (lambda () (auto-revert-mode 1)))
   )
 
+
+
+(use-package timu-spacegrey-theme
+  :straight t
+  :config
+  ;(customize-set-variable 'timu-spacegrey-flavour "light")
+;				      (load-theme 'timu-spacegrey t)
+  )
 
 
 (use-package vertico
@@ -359,26 +267,36 @@ n      (eval-print-last-sexp)))
 (setq org-startup-with-inline-images t)
 ;;(setq org-image-actual-width '(300))  ; Set image size (optional)
 
-(use-package jupyter
-  :after (org-mode)
-  )
-
-;(use-package org-mode
- ; :config
+(use-package jupyter)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
    (jupyter . t)))
-(setq org-hide-emphasis-markers t)
-
-;)
-
 
 ;;(use-package writeroom-mode
 ;;  :hook (org-mode . writeroom-mode)
 ;;  :straight  
 ;;  )
 
+(setq org-hide-emphasis-markers t)
+
+ (let* ((variable-tuple
+          (cond ((x-list-fonts "SF Pro Text")         '(:font "SF Pro Text"))
+                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+         ;;(base-font-color     (face-foreground 'default nil 'default))
+         (headline           `(:inherit default :weight bold)))
+
+    (custom-theme-set-faces
+     'user
+     `(org-level-8 ((t (,@headline ,@variable-tuple))))
+     `(org-level-7 ((t (,@headline ,@variable-tuple))))
+     `(org-level-6 ((t (,@headline ,@variable-tuple))))
+     `(org-level-5 ((t (,@headline ,@variable-tuple))))
+     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.))))
+     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.1))))
+     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.25))))
+     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+     `(org-document-title ((t (,@headline ,@variable-tuple :height 1.75 :underline nil))))))
 
 
   (custom-theme-set-faces
@@ -388,10 +306,11 @@ n      (eval-print-last-sexp)))
 
 
 (use-package org-margin
-  :after (org-mode)
   :straight '(org-margin :type git :host github :repo "rougier/org-margin")
   :hook (org-mode . org-margin-mode)
   )
+
+
 
 
 (use-package spacious-padding
@@ -402,14 +321,14 @@ n      (eval-print-last-sexp)))
   :init
   ;; These are the defaults, but I keep it here for visiibility.
   (setq spacious-padding-widths
-        '( :internal-border-width 10
-           :header-line-width 8
-           :mode-line-width 1
-           :tab-width 2
+        '( :internal-border-width 3
+           :header-line-width 4
+           :mode-line-width 4
+           :tab-width 4
            :right-divider-width 30
            :scroll-bar-width 8
-           :left-fringe-width 10
-           :right-fringe-width 10))
+           :left-fringe-width 20
+           :right-fringe-width 20))
 
   ;; Read the doc string of `spacious-padding-subtle-mode-line' as
   ;; it is very flexible.
@@ -425,25 +344,63 @@ n      (eval-print-last-sexp)))
  ; (setq marginalia-max-relative-age 0)) ; absolute time
 
 
-;(use-package doom-modeline :config (setq
-;doom-modeline-buffer-modification-icon nil) (setq
-;doom-modeline-buffer-file-name-style 'relative-from-project)
-;(doom-modeline-def-modeline 'my-simple-line '(buffer-info)
-;'(minor-modes process vcs major-mode)) (defun
-;setup-custom-doom-modeline () (doom-modeline-set-modeline
-;'my-simple-line 'default)) (add-hook 'doom-modeline-mode-hook
-;'setup-custom-doom-modeline) (setq doom-modeline-height 10) (setq
-;doom-modeline-bar-width 0) (setq doom-modeline-window-width-limit 60)
-;:init (doom-modeline-mode 1) ; (set-face-attribute 'doom-modeline nil
-;:box nil) :config (set-face-attribute 'doom-modeline nil :font
-;"Roboto") )
-
+;(use-package doom-modeline
+;  :config
+;  (setq doom-modeline-buffer-modification-icon nil)
+;
+;  (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+;  (doom-modeline-def-modeline 'my-simple-line
+;    '(buffer-info)
+;    '(minor-modes process vcs major-mode))
+;  (defun setup-custom-doom-modeline ()
+;    (doom-modeline-set-modeline 'my-simple-line 'default))
+;  (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+;  (setq doom-modeline-height 10)
+;  (setq doom-modeline-bar-width 0)
+;(setq doom-modeline-window-width-limit 60)
+;  :init
+;  (doom-modeline-mode 1)
+; ; (set-face-attribute 'doom-modeline nil
+; ;                   :box nil)
+;
+;  )
+;
 
 ;;(add-hook 'text-mode-hook 'my-set-margins)
 (use-package htmlize)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("aff0396925324838889f011fd3f5a0b91652b88f5fd0611f7b10021cc76f9e09"
+     "3d9938bbef24ecee9f2632cb25339bf2312d062b398f0dfb99b918f8f11e11b1"
+     "da69584c7fe6c0acadd7d4ce3314d5da8c2a85c5c9d0867c67f7924d413f4436"
+     "b1791a921c4f38cb966c6f78633364ad880ad9cf36eef01c60982c54ec9dd088"
+     "df39cc8ecf022613fc2515bccde55df40cb604d7568cb96cd7fe1eff806b863b"
+     "00d7122017db83578ef6fba39c131efdcb59910f0fac0defbe726da8072a0729"
+     "b9c002dc827fb75b825da3311935c9f505d48d7ee48f470f0aa7ac5d2a595ab2"
+     "1ad12cda71588cc82e74f1cabeed99705c6a60d23ee1bb355c293ba9c000d4ac"
+     "19b62f442479efd3ca4c1cef81c2311579a98bbc0f3684b49cdf9321bd5dfdbf"
+     "59c36051a521e3ea68dc530ded1c7be169cd19e8873b7994bfc02a216041bf3b"
+     "ae20535e46a88faea5d65775ca5510c7385cbf334dfa7dde93c0cd22ed663ba0"
+     "1930427eae3d4d830a43fd79fbda76021138b929c243a4e8606cf4f0531ea17c"
+     "b3ba955a30f22fe444831d7bc89f6466b23db8ce87530076d1f1c30505a4c23b"
+     "cd5f8f91cc2560c017cc9ec24a9ab637451e36afd22e00a03e08d7b1b87c29ca"
+     "ea4dd126d72d30805c083421a50544e235176d9698c8c541b824b60912275ba1"
+     "31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330"
+     "b687de1ea44260b38668a73f825067bbf723595c4560b32acf890c2a500f82e1"
+     "bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af"
+     "0cc70543214e5133e0eb479a01e57128a4f3e62195ca9073dffe90c8a57519e1"
+     default))
+ '(package-selected-packages '(marginalia consult orderless vertico)))
 
 (custom-set-faces
- 
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(fixed-pitch ((t (:family "RobotoMono Nerd Font" :height 140))))
  '(org-document-title ((t (:inherit default :weight bold :font "SF Pro Text" :height 1.75 :underline nil))))
  '(org-level-1 ((t (:inherit default :weight bold :font "SF Pro Text" :height 1.5))))

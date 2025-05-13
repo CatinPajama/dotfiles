@@ -1,9 +1,8 @@
 local function get_lualine_colors()
-  local c = require('material.colors.init').main
+  local c = require('kanagawa.colors').setup()
   --c.bg = c.bg_dark
   --c.bg_dark = c.bg
-
-  return c
+  return c.palette
 end
 
 local function get_kirby_colors()
@@ -11,7 +10,7 @@ local function get_kirby_colors()
 
   return {
     n = colors.red,
-    i = colors.green,
+    i = colors.dragonGreen,
     v = colors.blue,
     [''] = colors.blue,
     V = colors.blue,
@@ -102,31 +101,48 @@ return {
   opts = function()
     local colors = get_lualine_colors()
 
-    local tokyo = require 'lualine.themes.material-nvim'
+    local tokyo = require 'lualine.themes.kanagawa'
+    tokyo.normal.a.fg = colors.dragonAqua
+    tokyo.insert.a.fg = colors.dragonGreen
+    tokyo.visual.a.fg = colors.dragonViolet
+    tokyo.command.a.fg = colors.dragonYellow
+    --
+    -- tokyo.normal.a.bg = colors.bg
+    -- tokyo.insert.a.bg = colors.bg
+    -- tokyo.visual.a.bg = colors.bg
+    -- tokyo.command.a.bg = colors.bg
+    -- tokyo.replace.a.bg = colors.bg
+    -- tokyo.inactive.a.bg = colors.bg
+    -- --tokyo.terminal.a.bg = colors.bg_dark
+    --
+    -- tokyo.normal.b.bg = colors.bg
+    -- tokyo.insert.b.bg = colors.bg
+    -- tokyo.visual.b.bg = colors.bg
+    -- tokyo.command.b.bg = colors.bg
+    -- tokyo.replace.b.bg = colors.bg
+    -- tokyo.inactive.b.bg = colors.bg
+    -- --tokyo.terminal.b.bg = colors.bg_dark
+    --
+    -- tokyo.normal.c.bg = colors.bg
+    -- tokyo.inactive.c.bg = colors.bg
+    --
+    -- tokyo.normal.b.bg = colors.bg
+    -- tokyo.insert.b.bg = colors.bg
+    -- tokyo.visual.b.bg = colors.bg
+    -- tokyo.command.b.bg = colors.bg
+    -- tokyo.replace.b.bg = colors.bg
+    -- tokyo.inactive.b.bg = colors.bg
+    --
+    local modes = { 'normal', 'insert', 'visual', 'command', 'replace', 'inactive' }
+    local section_list = { 'a', 'b', 'c' }
 
-    tokyo.normal.a.fg = colors.yellow
-    tokyo.insert.a.fg = colors.darkgreen
-    tokyo.visual.a.fg = colors.paleblue
-    tokyo.command.a.fg = colors.teal
-
-    tokyo.normal.a.bg = colors.base
-    tokyo.insert.a.bg = colors.base
-    tokyo.visual.a.bg = colors.base
-    tokyo.command.a.bg = colors.base
-    tokyo.replace.a.bg = colors.base
-    tokyo.inactive.a.bg = colors.base
-    --tokyo.terminal.a.bg = colors.base
-
-    tokyo.normal.b.bg = colors.base
-    tokyo.insert.b.bg = colors.base
-    tokyo.visual.b.bg = colors.base
-    tokyo.command.b.bg = colors.base
-    tokyo.replace.b.bg = colors.base
-    tokyo.inactive.b.bg = colors.base
-    --tokyo.terminal.b.bg = colors.base
-
-    tokyo.normal.c.bg = colors.base
-    tokyo.inactive.c.bg = colors.base
+    for _, mode in ipairs(modes) do
+      for _, section in ipairs(section_list) do
+        if tokyo[mode] and tokyo[mode][section] then
+          tokyo[mode][section].bg = 'none'
+        end
+      end
+    end
 
     local kirby_default = '(>*-*)>'
 
@@ -186,8 +202,8 @@ return {
     }
 
     local mode_kirby = {
-      n = '<(•ᴗ•)>',
-      i = '>(xᴗx)>',
+      n = '<(nᴗn)>',
+      i = '>(;ᴗ;)>',
       v = '(v•-•)v',
       [''] = '(v•-•)>',
       V = '(>•-•)>',
@@ -214,27 +230,51 @@ return {
           'mode',
           -- icons_enabled = true,
           fmt = function()
+            -- return '█'
             return mode_kirby[vim.fn.mode()] or vim.api.nvim_get_mode().mode
           end,
-          separator = { right = '', left = '' },
+          separator = { right = ' ', left = '' },
 
-          color = {
-            bg = colors.base,
+          color = {},
+          padding = { left = 0, right = 2 },
+        },
+        {
+          'filetype',
+          color = { fg = colors.dragonYellow },
+          separator = { right = '', left = '' },
+          cond = cond_disable_by_ft,
+          icon_only = true,
+          colored = false,
+          padding = { right = 0, left = 0 },
+          condition = conditions.buffer_not_empty,
+        },
+
+        {
+          'filename',
+
+          padding = { right = 1, left = 0 },
+          color = { fg = colors.dragonYellow },
+          separator = { right = '', left = ' ' },
+
+          symbols = {
+            modified = signs.file.modified, -- Text to show when the file is modified.
+            readonly = signs.file.readonly, -- Text to show when the file is non-modifiable or readonly.
+            unnamed = signs.file.unnamed, -- Text to show for unnamed buffers.
+            newfile = signs.file.created, -- Text to show for newly created file before first write
           },
-          padding = { left = 0, right = 0 },
         },
       },
       lualine_b = {
         {
           'progress',
           separator = { right = '' },
-          color = { fg = colors.darkcyan, bg = colors.base },
+          color = { fg = colors.dragonGreen },
           padding = { left = 2, right = 0 },
         },
         {
           'location',
-          separator = { right = '' },
-          color = { fg = colors.darkcyan, bg = colors.base },
+          separator = { right = '' },
+          color = { fg = colors.dragonGreen, bg = colors.bg },
           padding = { left = 1, right = 0 },
         },
         {
@@ -250,11 +290,12 @@ return {
               return ''
             end
           end,
-          color = { fg = colors.darkcyan, bg = colors.base },
-          separator = { right = '' },
+          color = { fg = colors.dragonBlue2 },
+          separator = { right = '' },
         },
       },
       lualine_c = {
+        --[[-
         {
           function()
             local msg = ' No Active Lsp'
@@ -275,22 +316,24 @@ return {
             return msg
           end,
           icon = ' ',
-          color = { fg = colors.red, bg = colors.base },
+          color = { fg = colors.red, bg = colors.bg },
           padding = { left = 3, right = 0 },
           separator = { right = '', left = '' },
         },
+        ]]
+        --
         {
           'diagnostics',
           sources = { 'nvim_lsp' },
           symbols = signs.full_diagnostic,
-          -- diagnostics_color = {
-          -- 	error = { fg = c.error },
-          -- 	warn = { fg = c.warn },
-          -- 	info = { fg = c.info },
-          -- 	hint = { fg = c.hint },
-          -- },
+          diagnostics_color = {
+            error = { fg = colors.dragonRed },
+            warn = { fg = colors.dragonYellow },
+            info = { fg = colors.dragonGreen2 },
+            hint = { fg = colors.dragonBlue2 },
+          },
           colored = true,
-          color = { bg = colors.base },
+          color = { bg = colors.bg },
           padding = { left = 3, right = 1 },
         },
       },
@@ -299,12 +342,12 @@ return {
         {
           'branch',
           icon = signs.git.branch,
-          color = { fg = colors.green, bg = colors.base },
-          separator = { right = '', left = '' },
+          color = { fg = colors.dragonGreen, bg = colors.bg },
+          separator = { right = '', left = '' },
         },
         {
           'diff',
-          colored = true,
+          colored = false,
           source = diff_source,
           symbols = {
             added = signs.git.added,
@@ -317,7 +360,7 @@ return {
             modified = 'LuaLineDiffChange', -- Changes the diff's modified color
             removed = 'LuaLineDiffDelete', -- Changes the diff's removed color you
           },
-          color = { bg = colors.base },
+          color = { bg = colors.bg },
           -- diff_color = {
           -- 	added = { gui = "bold" },
           -- 	modified = { gui = "bold" },
@@ -325,38 +368,13 @@ return {
           -- },
         },
       },
-      lualine_z = {
-        {
-          'filetype',
-          color = { bg = colors.base, fg = colors.yellow },
-          separator = { right = '', left = '' },
-          cond = cond_disable_by_ft,
-          icon_only = true,
-          colored = false,
-          padding = { right = 0, left = 0 },
-          condition = conditions.buffer_not_empty,
-        },
-        {
-          'filename',
-
-          padding = { right = 1, left = 0 },
-          color = { bg = colors.base, fg = colors.yellow },
-          separator = { right = '', left = '' },
-
-          symbols = {
-            modified = signs.file.modified, -- Text to show when the file is modified.
-            readonly = signs.file.readonly, -- Text to show when the file is non-modifiable or readonly.
-            unnamed = signs.file.unnamed, -- Text to show for unnamed buffers.
-            newfile = signs.file.created, -- Text to show for newly created file before first write
-          },
-        },
-      },
+      lualine_z = {},
     }
 
     local config = {
       options = {
         theme = tokyo,
-        disabled_filetypes = { statusline = { 'alpha', 'snacks_dashboard' } },
+        disabled_filetypes = { statusline = { 'alpha', 'dashboard' } },
         icons_enabled = true,
         globalstatus = true,
         component_separators = { left = '', right = '' },

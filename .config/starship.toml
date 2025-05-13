@@ -1,144 +1,67 @@
-# ~/.config/starship.toml
-palette = "catppuccin_macchiato"
+format = """$directory$git_branch$python """
+palette = "kanagawa"
 add_newline = false
-command_timeout = 1000
-format = """$kubernetes$directory$git_branch$python 
-"""
 
 
+[palettes.rose-pine-moon]
+overlay = '#393552'
+love = '#eb6f92'
+gold = '#f6c177'
+rose = '#ea9a97'
+pine = '#3e8fb0'
+foam = '#9ccfd8'
+iris = '#c4a7e7'
+
+[palettes.kanagawa]
+red = '#e46876'
+pink = '#d27e99'
+green = '#98bb6c'
+aqua = '#7aa89f'
+yellow = '#e6c384'
+blue = '#7fb4ca'
+light_violet = '#938aa9'
+violet = '#957fbb'
+
+[directory]
+format = "[ ](fg:aqua)[ $path]($style)(fg:overlay)"
+style = "fg:aqua bold"
+truncation_length = 2
+truncation_symbol = ""
+use_logical_path = true
 
 [character]
-format = "$symbol "
-success_symbol = "[](bold italic red)"
-error_symbol = "[](italic yellow)"
-vimcmd_symbol = "[](italic dimmed green)"
-# not supported in zsh
-vimcmd_replace_one_symbol = "◌"
-vimcmd_replace_symbol = "□"
-vimcmd_visual_symbol = "▼"
-
-# ---
-
-[os]
-format = '[$symbol](bold white) '   
-disabled = false
-
-[os.symbols]
-Windows = ' '
-Arch = ''
-Ubuntu = ''
-Macos = '󰀵'
-
-# ---y
-
-# Shows the username
-[username]
-style_user = 'white bold'
-style_root = 'black bold'
-format = '[$user]($style) '
-disabled = false
-show_always = true
-
-# Shows the hostname
-[hostname]
-ssh_only = false
-format = 'on [$hostname](bold blue) '
-disabled = false
-
-# Shows current directory
-[directory]
-style = 'blue'
-truncation_length = 1
-truncation_symbol = './'
-home_symbol = ' 󰋜'
-read_only_style = '197'
-read_only = '  '
-format = '[$path]($style)[$read_only]($read_only_style) '
+success_symbol = "[󱪁](blue bold)"
+error_symbol = "[󱪁](red bold)"
 
 [directory.substitutions]
-'.config' = ' '
-# '~/' = ' \/'
+Documents = "󰈙"
+Downloads = " "
+Music = " "
+Pictures = " "
 
+[fill]
+style = "fg:overlay"
+symbol = " "
 
-
-# Shows current git branch
 [git_branch]
-symbol = ' '
-format = '[$symbol$branch]($style) '
-# truncation_length = 4
-truncation_symbol = '…/'
-style = 'bold green'
+format = "(fg:overlay)[ $symbol $branch]($style)(fg:overlay)"
+style = "fg:green"
+symbol = ""
 
-# Shows current git status
-[git_status]
-format = '([ \( $all_status$ahead_behind\)]($style) )'
-style = 'bold green'
-conflicted = '[ confliced=${count}](red) '
-up_to_date = '[󰘽 up-to-date](green) '
-untracked = '[󰋗 untracked=${count}](maroon) '
-ahead = ' ahead=${count}'
-diverged = ' ahead=${ahead_count}  behind=${behind_count}'
-behind = ' behind=${count}'
-stashed = '[ stashed=${count}](green) '
-modified = '[󰛿 modified=${count}](yellow) '
-staged = '[󰐗 staged=${count}](green) '
-renamed = '[󱍸 renamed=${count}](yellow) '
-deleted = '[󰍶 deleted=${count}](red) '
-
-# Shows kubernetes context and namespace
-[kubernetes]
-format = '[󱃾 $context\($namespace\)](bold purple) '
+[time]
 disabled = false
+format = "(fg:overlay)[ $time 󰴈 ]($style)(fg:overlay)"
+style = "fg:gold"
+time_format = "%H:%M"
+use_12hr = false
 
-# ---
-
-[vagrant]
+[username]
 disabled = true
-
-[docker_context]
-disabled = true
-
-[helm]
-disabled = true
+format = "[ $user](fg:yellow)"
+show_always = true
 
 [python]
-symbol = ' '
-disabled = false
-
-[nodejs]
-disabled = true
-
-[ruby]
-disabled = true
-
-[terraform]
-disabled = true
-
-
-[palettes.catppuccin_macchiato]
-rosewater = "#f4dbd6"
-flamingo = "#f0c6c6"
-pink = "#f5bde6"
-mauve = "#c6a0f6"
-red = "#ed8796"
-maroon = "#ee99a0"
-peach = "#f5a97f"
-yellow = "#eed49f"
-green = "#a6da95"
-teal = "#8bd5ca"
-sky = "#91d7e3"
-sapphire = "#7dc4e4"
-blue = "#8aadf4"
-lavender = "#b7bdf8"
-text = "#cad3f5"
-subtext1 = "#b8c0e0"
-subtext0 = "#a5adcb"
-overlay2 = "#939ab7"
-overlay1 = "#8087a2"
-overlay0 = "#6e738d"
-surface2 = "#5b6078"
-surface1 = "#494d64"
-surface0 = "#363a4f"
-base = "#24273a"
-mantle = "#1e2030"
-crust = "#181926"
+detect_extensions=[]
+style = 'fg:yellow'
+symbol = ' '
+format = ' [${symbol}$virtualenv]($style)'

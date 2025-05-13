@@ -24,7 +24,7 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', opts = { notification = { window = { winblend = 0 } } } },
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
@@ -35,7 +35,7 @@ return {
         local hl = 'DiagnosticSign' .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
-
+      --vim.diagnostic.config { virtual_lines = true }
       --vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError', { underline = false })
       --vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { underline = false })
       --vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', { underline = false })

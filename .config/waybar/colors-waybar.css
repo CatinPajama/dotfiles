@@ -1,6 +1,9 @@
-@define-color background #121212;
-@define-color overlay1 #1e1e1e;
+@define-color background #1c202b;
+@define-color surface #222b39;
+@define-color overlay1 rgba(57, 53, 82,1);
+@define-color iris #c4a7e7;
+@define-color red #eb6f92;
 @define-color overlay2 #222222;
-@define-color overlay3 #242424;
-@define-color foreground #fff;
+@define-color overlay3 rgba(30,30,30,0);
+@define-color foreground #c6c9c5;
 @define-color red #cf6679;

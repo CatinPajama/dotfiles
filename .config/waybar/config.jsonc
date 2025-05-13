@@ -7,9 +7,11 @@
 	"exclusive": true,
 	"passthrough": false,
 	"position": "top",
-	"spacing": 8,
+	"spacing": 6,
+	"output": ["eDP-1", "HDMI-A-1"],
 	"fixed-center": true,
-	"ipc": false,
+	"ipc": true,
+	"reload_style_on_change" : true,
 	
 	"modules-left": [
 		"custom/lock",
@@ -20,9 +22,9 @@
 		"custom/weather",
 		],
 	
-	//"modules-center": [
-		// "wlr/taskbar",
-	//], 
+	"modules-center": [
+		 "hyprland/window",
+	], 
 	
 	"modules-right": [
 		"tray",
@@ -31,7 +33,7 @@
 		"group/laptop",
 		"group/audio",
 		// "custom/separator#line",
-		"clock",
+		"group/clockgroup",
 		//"keyboard-state",
 		//"custom/keyboard",
 		"custom/swaync"

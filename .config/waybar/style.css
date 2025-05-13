@@ -1,45 +1,42 @@
 @import "colors-waybar.css";
 *{
 	all: unset;
-	font-family: "Symbols Nerd Font", "Product Sans";
+	font-family: "Symbols Nerd Font", "SF Pro Display";
+	font-weight : 600;
 }
 	
 window#waybar {
-	background: @overlay1;
+	background: @background;
 	/*background: #181926;*/
 	color:  @foreground;
 	/*color : #cdd6f4;*/
 	font-size: 10px;
-	font-weight : 600;
 }
 
 #workspaces {
-	margin: 0.3rem 0 0.3rem 0;
-	font-weight: bold;
+	border: 1.5px @surface solid;
+	border-radius : 5px;
 }
 
 
 	   
 #workspaces button {
 	/*color: #c0caf5;*/
-	background-color: @overlay3;
 	/*background-color: #1e2030;*/
 	/*border: 1.5px #c0caf5 solid;*/
-   	border-radius: 8px;
-   	padding : 0.3rem 1rem 0.3rem 1rem;
-	margin-right : 8px;
+   	border-radius: 0px;
+   	padding : 0.2rem 0.8rem 0.2rem 0.8rem;
+	margin-right : 1px;
 }
    
 #workspaces button.active {
-	border: 1px @foreground solid;
-   	/*border-radius: 15px 15px 15px 15px;*/
+	background-color: @surface;
 	color : @foreground;
 	/*color : #f38ba8;*/
 }
  
 #battery,
 #bluetooth,
-#clock,
 #cpu,
 #disk,
 #idle_inhibitor,
@@ -67,6 +64,7 @@ window#waybar {
 #custom-updater,
 #custom-weather,
 #custom-weather.clearNight,
+#clockgroup,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
 #custom-weather.default 
@@ -76,11 +74,12 @@ window#waybar {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.sunnyDay {
-   	padding : 0.3rem 1rem 0.3rem 1rem;
-	background-color: @overlay3;
+   	padding : 0.3rem 0.5rem 0.3rem 0.5rem;
+	/* background-color: @surface; */
 	/*background-color: #1e2030;*/
-   	border-radius: 8px;
-	margin: 0.4rem 0 0.4rem 0;
+   	border-radius: 5px;
+	margin: 0.0rem 0 0.0rem 0;
+	border: 1.5px @surface solid;
 }
 	 
 #temperature.critical {
@@ -165,24 +164,71 @@ window#waybar {
 	border-radius: 5px;
 	background-color: wheat;
 }
-
-#clock {
-	border: 1px #c0caf5 solid;
-}
-
 #custom-menu {
 	margin-left : 0px;
-	/*border: 1px #c0caf5 solid;*/
+	/*border: 2px #c0caf5 solid;*/
    	padding : 0.3rem 0.5rem 0.3rem 0.5rem;
+
 }
 
 
 #custom-swaync {
-	font-weight: bold;
-	margin-right : 5px;
+	/* font-weight: bold; */
+	margin-right : 4px;
+	border: 1.5px @surface solid;
+	padding : 0 8px 0 8px;
+
+
 }
 
 #custom-lock {
-	font-weight: bold;
-	margin-left : 5;
+	/* font-weight: bold; */
+	margin-left : 4;
+	padding: 0 10px 0 10px;
+	border: 1.5px @surface solid;
+}
+
+
+#custom-clock_custom {
+	padding-top : 1px;	
+	font-family : "ClockFaceFatRect";
+	border : none;
+	font-size : 13px; 
+}
+#clock {
+	border : none;
+}
+
+#clockgroup{
+	/* border-bottom: 2px @foreground solid; */
+	/* border-radius : 0px; */
+}
+
+
+#tray {
+	border-bottom: 1.5px @foreground solid; 
+	border-radius : 0px; 
+   	padding : 0.2rem 0.75rem 0.2rem 0.75rem;
+
+}
+#pulseaudio {
+	/* border-bottom : 2px @foreground solid; */
+	/* border-radius : 0px; */
+}
+
+#network {
+	/* border-bottom : 2px @foreground solid; */
+	/* border-radius : 0px; */
+}
+
+#battery {
+	/* border-bottom : 2px @foreground solid; */
+	/* border-radius : 0px; */
+}
+
+#window {
+	border : none;
+}
+window#waybar.empty #window {
+    background-color: transparent;
 }

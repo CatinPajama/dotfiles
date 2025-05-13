@@ -7,20 +7,23 @@
 "hyprland/workspaces": {
 	"active-only": false,
 	"all-outputs": true,
-	"format": "{icon}<span color=\"#999999\"> {windows}</span>",
+	//"format": "{icon}<span color=\"#4d4d4d\"> {windows}</span>",
+	"format": "{icon} {windows}",
 	"show-special": false,
 	"on-click": "activate",
 	"on-scroll-up": "hyprctl dispatch workspace e+1",
 	"on-scroll-down": "hyprctl dispatch workspace e-1",
 	"window-rewrite-default": "   ",
 	"window-rewrite": {
-	    "class<firefox>": "  󰈹 ", // Windows whose classes are "firefox"
-	    "class<zen>": "  󰈹 ", // Windows whose classes are "firefox"
+	    "class<firefox>": "   ", // Windows whose classes are "firefox"
+	    "class<zen>": "   ", // Windows whose classes are "firefox"
 	    "code": "  󰨞 ",
 	    "Spotify": "   ",
 	    "vesktop": "  󰙯 ",
 	    "kitty" : "   ",
-	    "emacs" : "   "
+	    "alacritty" : "   ",
+	    "emacs" : "   ",
+	    "com.stremio.stremio" : "  󰝆 "
 	},
 	"persistent-workspaces": {
 		"1": [],
@@ -155,7 +158,7 @@
 	"format-window-separator": " ",
 	"window-rewrite-default": " ",
 	"window-rewrite": {
-		"title<.*youtube.*>": " ",
+		"title<.*YouTube.*>": " ",
 		"title<.*amazon.*>": " ",
 		"title<.*reddit.*>": " ",
 		"title<.*Picture-in-Picture.*>": " ",
@@ -305,18 +308,18 @@
 		"warning": 30,
 		"critical": 15
 	},
-	"format": "{icon}  {capacity}%",
-	"format-charging": " {capacity}%",
+	"format": "<span font='10' weight='600'>{icon}</span> {capacity}%",
+	"format-charging": "<span font='10' weight='600'></span>  {capacity}%",
 	"format-plugged": "󱘖 {capacity}%",
 	"format-alt-click": "click",
 	"format-full": "{icon}",
 	"format-alt": "{icon} {time}",
 	"format-icons": [
-	"<span color='#f7768e'>   </span>",
-	"<span color='#ff9e64'>   </span>",
-	"<span color='#9ece6a'>   </span>",
-	"<span color='#9ece6a'>   </span>",
-	"<span color='#9ece6a'>   </span>"
+	"<span color='#c4746e'>   </span>",
+	"<span color='#c4b28a'>   </span>",
+	"<span color='#8a9a7b'>   </span>",
+	"<span color='#8a9a7b'>   </span>",
+	"<span color='#8a9a7b'>   </span>"
 	],
 	"format-time": "{H}h {M}min",
 	"tooltip": true,
@@ -334,11 +337,15 @@
 	"tooltip": true,
 	"on-click": "blueman-manager",
 },
+"group/clockgroup" : {
+	"orientation" : "horizontal",
+	"modules" : ["custom/clock_custom","clock"]
+},
 "clock": {
 	"interval": 1,
     //"format": " {:%I:%M %p}", // AM PM format
-    "format": "󱑒  {:%H:%M:%S}", // 24H
-	"format-alt": "󱑒 {:%H:%M   %Y, %d %B, %A}",
+    "format": "{:%H:%M:%S}", // 24H
+	"format-alt": "{:%H:%M   %Y, %d %B, %A}",
 	"tooltip-format": "<tt><small>{calendar}</small></tt>",
 	"calendar": {
 		"mode": "year",
@@ -486,7 +493,8 @@
 },
 "network": {
 	"format": "{ifname}",
-	"format-wifi": "<span color='#e7d8b1'>{essid}</span> {icon}",
+	//"format-wifi": "<span font='9'>{icon}</span> <span color='#e7d8b1'>{essid}</span>",
+	"format-wifi": "<span font='9'>{icon}</span> {essid}",
 	"format-ethernet": "󰌘",
 	"format-disconnected": "󰌙",
 	"tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
@@ -496,7 +504,7 @@
 	"tooltip-format-disconnected": "󰌙 Disconnected",
 	"max-length": 30,
 	"format-icons": [
-		" 󰖩 ",
+		" ᯤ ",
 	],
 	"on-click-right": "~/.config/hypr/scripts/RofiWifiMenu.sh",
 	"on-click-left": "~/.config/hypr/scripts/RofiWifiMenu.sh"
@@ -530,7 +538,7 @@
   }
 },
 "pulseaudio": {
-	"format": "{icon} {volume}%",
+	"format": "<span font='9'>{icon}</span> {volume}%",
 	"format-bluetooth": "{icon} 󰂰 {volume}%",
 	"format-muted": " 󰖁 ",
 	"format-icons": {
@@ -628,6 +636,10 @@
 		"kitty"
 		],
 },
+"custom/clock_custom" : {
+	"exec" : "python ~/scripts/clock-waybar.py",
+	"interval" : 5
+},
 "custom/cycle_wall": {
 	"format": " ",
 	"on-click": "~/.config/hypr/UserScripts/WallpaperSelect.sh",
@@ -661,6 +673,7 @@
 	"on-click": "hyprlock",
 	"tooltip": true,
 	"tooltip-format": "󰷛 Screen Lock",
+	"on-click-right" : "~/scripts/shaders.sh"
 
 },
 "custom/menu": {
