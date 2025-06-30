@@ -5,15 +5,15 @@ palette = 'colors'
 
 [palettes.colors]
 mustard = '#af8700' # example
-color1 = '#b8c3ff'
-color2 = '#202c61'
-color3 = '#c6c5d0'
-color4 = '#1f1f25'
-color5 = '#202c61'
-color6 = '#121318'
-color7 = '#121318'
-color8 = '#b8c3ff'
-color9 = '#e4bad9'
+color1 = '#80d5cf'
+color2 = '#003735'
+color3 = '#bec9c7'
+color4 = '#1a2120'
+color5 = '#003735'
+color6 = '#0e1514'
+color7 = '#0e1514'
+color8 = '#80d5cf'
+color9 = '#b0c9e7'
 
 [directory]
 format = "[ ](fg:color1)[ $path]($style)(fg:overlay)"

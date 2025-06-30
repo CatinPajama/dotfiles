@@ -40,6 +40,7 @@ return {
             FloatTitle = { bg = 'none' },
             StatusLine = { bg = 'none' },
             StatusLineNC = { bg = 'none' },
+            DashboardHeader = { fg = require('kanagawa.colors').setup().palette.dragonRed },
 
             -- Save an hlgroup with dark background and dimmed foreground
             -- so that you can use it where your still want darker windows.

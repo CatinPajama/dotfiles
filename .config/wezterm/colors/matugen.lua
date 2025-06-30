@@ -1,8 +1,8 @@
 return {
 	-- The default text color
-	foreground = "#e3e1e9",
+	foreground = "#dde4e2",
 	-- The default background color
-	background = "#121318",
+	background = "#0e1514",
 
 	-- Overrides the cell background color when the current cell is occupied by the
 	-- cursor and the cursor style is set to Block
