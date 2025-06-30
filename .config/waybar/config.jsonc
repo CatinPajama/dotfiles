@@ -15,15 +15,16 @@
 	
 	"modules-left": [
 		"custom/lock",
-		"hyprland/workspaces",	
+		"hyprland/workspaces"	
 		//"power-profiles-daemon",
 		//"group/mobo_drawer",
 		//"custom/separator#blank",
-		"custom/weather",
+		//"custom/weather",
 		],
 	
 	"modules-center": [
-		 "hyprland/window",
+		// "hyprland/window",
+		"group/clockgroup",
 	], 
 	
 	"modules-right": [
@@ -31,12 +32,11 @@
 		"group/connections",
 		// "mpris", 
 		"group/laptop",
-		"group/audio",
+		"group/audio"
 		// "custom/separator#line",
-		"group/clockgroup",
 		//"keyboard-state",
 		//"custom/keyboard",
-		"custom/swaync"
+		// "custom/swaync"
 		// "custom/lock",
 		// "custom/power",
 		]

@@ -13,7 +13,7 @@ PROMPT_NEEDS_NEWLINE=false
 
 precmd() {
   if [[ "$PROMPT_NEEDS_NEWLINE" == true ]]; then
-    echo
+     echo
   fi
   PROMPT_NEEDS_NEWLINE=true
 }
@@ -34,3 +34,9 @@ eval "$(starship init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+export TERM=xterm-kitty
+
+#if [[ -f "$HOME/.cache/wal/sequences" ]]; then
+#    (cat $HOME/.cache/wal/sequences)
+#fi

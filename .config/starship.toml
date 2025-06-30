@@ -1,31 +1,24 @@
-format = """$directory$git_branch$python """
-palette = "kanagawa"
+format = """$directory """
+right_format = """$git_branch$python"""
 add_newline = false
+palette = 'colors'
 
-
-[palettes.rose-pine-moon]
-overlay = '#393552'
-love = '#eb6f92'
-gold = '#f6c177'
-rose = '#ea9a97'
-pine = '#3e8fb0'
-foam = '#9ccfd8'
-iris = '#c4a7e7'
-
-[palettes.kanagawa]
-red = '#e46876'
-pink = '#d27e99'
-green = '#98bb6c'
-aqua = '#7aa89f'
-yellow = '#e6c384'
-blue = '#7fb4ca'
-light_violet = '#938aa9'
-violet = '#957fbb'
+[palettes.colors]
+mustard = '#af8700' # example
+color1 = '#b8c3ff'
+color2 = '#202c61'
+color3 = '#c6c5d0'
+color4 = '#1f1f25'
+color5 = '#202c61'
+color6 = '#121318'
+color7 = '#121318'
+color8 = '#b8c3ff'
+color9 = '#e4bad9'
 
 [directory]
-format = "[ ](fg:aqua)[ $path]($style)(fg:overlay)"
-style = "fg:aqua bold"
-truncation_length = 2
+format = "[ ](fg:color1)[ $path]($style)(fg:overlay)"
+style = "fg:color1 "
+truncation_length = 0
 truncation_symbol = ""
 use_logical_path = true
 

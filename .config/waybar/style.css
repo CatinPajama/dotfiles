@@ -1,8 +1,8 @@
 @import "colors-waybar.css";
 *{
 	all: unset;
-	font-family: "Symbols Nerd Font", "SF Pro Display";
-	font-weight : 600;
+	font-family: "SF Pro Text";
+	font-weight : 500;
 }
 	
 window#waybar {
@@ -14,8 +14,6 @@ window#waybar {
 }
 
 #workspaces {
-	border: 1.5px @surface solid;
-	border-radius : 5px;
 }
 
 
@@ -23,10 +21,9 @@ window#waybar {
 #workspaces button {
 	/*color: #c0caf5;*/
 	/*background-color: #1e2030;*/
-	/*border: 1.5px #c0caf5 solid;*/
-   	border-radius: 0px;
-   	padding : 0.2rem 0.8rem 0.2rem 0.8rem;
-	margin-right : 1px;
+   	padding : 0.2rem 1rem 0.2rem 1rem;
+	margin : 0.3rem 0;
+	border-radius : 4px;
 }
    
 #workspaces button.active {
@@ -38,70 +35,31 @@ window#waybar {
 #battery,
 #bluetooth,
 #cpu,
-#disk,
-#idle_inhibitor,
-#keyboard-state,
-#memory,
-#mode,
-#mpris,
-#power-profiles-daemon,
 #pulseaudio,
-#taskbar,
-#temperature,
-#tray,
 #window,
-#wireplumber,
-#custom-cycle_wall,
-#custom-keyboard,
-#custom-light_dark,
 #custom-lock,
 #custom-menu,
 #network,
-#custom-power_vertical,
-#custom-power,
 #custom-swaync,
-#custom-spotify,
-#custom-updater,
-#custom-weather,
-#custom-weather.clearNight,
 #clockgroup,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.default 
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
+#tray,
 #custom-weather.sunnyDay {
    	padding : 0.3rem 0.5rem 0.3rem 0.5rem;
-	/* background-color: @surface; */
+	background-color: @surface;
+	border-radius : 4px;
 	/*background-color: #1e2030;*/
-   	border-radius: 5px;
-	margin: 0.0rem 0 0.0rem 0;
-	border: 1.5px @surface solid;
+	margin: 0.3rem 0 0.3rem 0;
 }
-	 
-#temperature.critical {
-	background-color: #ff0000;
-}
+
+
+
+
    
 @keyframes blink {
 	to {
 	color: rgb(225, 225, 225);
 	   }
 }
-#taskbar button:hover {
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-}
-   
-#taskbar button.active {
-	background-color: #7f849c;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-}
-
    
 #battery.critical:not(.charging) {
 	animation-name: blink;
@@ -126,20 +84,17 @@ window#waybar {
 	min-height: 0px;
 	opacity: 0;
 	background-image: none;
-	border: none;
 	box-shadow: none;
 }
 
 #pulseaudio-slider trough {
 	min-width: 80px;  
 	min-height: 10px; 
-	border-radius: 5px;
 	background-color: rgb(225, 225, 225);
 }
 
 #pulseaudio-slider highlight {
 	min-height: 10px; 
-	border-radius: 5px;
 	background-color: wheat;
 }
 
@@ -148,25 +103,21 @@ window#waybar {
 	min-height: 0px;
 	opacity: 0;
 	background-image: none;
-	border: none;
 	box-shadow: none;
 }
 
 #backlight-slider trough {
 	min-width: 80px;  
 	min-height: 10px;
-	border-radius: 5px;
 	background-color: rgb(225, 225, 225);
 }
 
 #backlight-slider highlight {
 	min-width: 10px; 
-	border-radius: 5px;
 	background-color: wheat;
 }
 #custom-menu {
 	margin-left : 0px;
-	/*border: 2px #c0caf5 solid;*/
    	padding : 0.3rem 0.5rem 0.3rem 0.5rem;
 
 }
@@ -174,8 +125,7 @@ window#waybar {
 
 #custom-swaync {
 	/* font-weight: bold; */
-	margin-right : 4px;
-	border: 1.5px @surface solid;
+	margin-right : 0px;
 	padding : 0 8px 0 8px;
 
 
@@ -183,52 +133,47 @@ window#waybar {
 
 #custom-lock {
 	/* font-weight: bold; */
-	margin-left : 4;
+	margin-left : 0.3rem;
 	padding: 0 10px 0 10px;
-	border: 1.5px @surface solid;
 }
 
 
 #custom-clock_custom {
 	padding-top : 1px;	
 	font-family : "ClockFaceFatRect";
-	border : none;
 	font-size : 13px; 
 }
+
+
 #clock {
-	border : none;
+
 }
 
 #clockgroup{
-	/* border-bottom: 2px @foreground solid; */
-	/* border-radius : 0px; */
-}
-
-
-#tray {
-	border-bottom: 1.5px @foreground solid; 
-	border-radius : 0px; 
-   	padding : 0.2rem 0.75rem 0.2rem 0.75rem;
 
 }
+
+
 #pulseaudio {
-	/* border-bottom : 2px @foreground solid; */
-	/* border-radius : 0px; */
+	margin-right : 0.3rem;
 }
 
 #network {
-	/* border-bottom : 2px @foreground solid; */
-	/* border-radius : 0px; */
 }
 
 #battery {
-	/* border-bottom : 2px @foreground solid; */
-	/* border-radius : 0px; */
 }
 
 #window {
-	border : none;
 }
 window#waybar.empty #window {
     background-color: transparent;
+}
+#tray menu {
+	background-color: @background;
+	color: @foreground;
+	font-size : 11px;
+	padding : 6px;
+	border-radius : 4px;
+	border: 1px @foreground solid;
 }

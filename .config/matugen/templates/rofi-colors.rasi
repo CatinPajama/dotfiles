@@ -1,0 +1,10 @@
+/*
+* Css Colors
+* Generated with Matugen
+*/
+
+* {
+	background: {{colors.background.default.hex}};
+	surface: {{colors.surface_container_high.default.hex}};
+	foreground: {{colors.on_surface.default.hex}};
+}

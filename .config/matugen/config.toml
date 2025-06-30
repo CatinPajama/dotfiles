@@ -1,0 +1,61 @@
+[config]
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/gtk.css'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+
+[templates.gnome]
+input_path = '~/.config/matugen/templates/gnome-shell.css'
+output_path = '~/.themes/Marble-material/gnome-shell/gnome-shell.css'
+
+[templates.ags]
+input_path = '~/.config/matugen/templates/ags.conf'
+output_path = '~/ags.conf'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar.css'
+output_path = '~/.config/waybar/colors-waybar.css'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/material.rasi'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.wezterm]
+input_path = '~/.config/matugen/templates/wezterm.lua'
+output_path = '~/.config/wezterm/colors/matugen.lua'
+
+
+[templates.qt5ct]
+input_path = '~/.config/matugen/templates/qtct-colors.conf'
+output_path = '~/.config/qt5ct/colors/matugen.conf'
+
+[templates.qt6ct]
+input_path = '~/.config/matugen/templates/qtct-colors.conf'
+output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'
+
+[templates.wallpaper]
+input_path = '~/.config/matugen/templates/wallpaper.txt'
+output_path = '~/.local/state/wallpaper.txt'
+
+[templates.colors]
+input_path = '~/.config/matugen/templates/colors.scss'
+output_path = '~/.local/state/quickshell/user/generated/material_colors.scss'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.conf'
+output_path = '~/.config/hypr/colors.conf'
+
+
+
