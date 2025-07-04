@@ -32,11 +32,11 @@
 		"group/connections",
 		// "mpris", 
 		"group/laptop",
-		"group/audio"
+		"group/audio",
 		// "custom/separator#line",
 		//"keyboard-state",
 		//"custom/keyboard",
-		// "custom/swaync"
+		"custom/swaync"
 		// "custom/lock",
 		// "custom/power",
 		]

@@ -1,5 +1,5 @@
-@define-color foreground rgb(221, 228, 226);
-@define-color bg rgba(14, 21, 20, 0.8);
-@define-color surface_high rgba(37, 43, 43, 0.6);
-@define-color primary rgb(128, 213, 207);
+@define-color foreground rgb(230, 226, 221);
+@define-color bg rgba(20, 19, 17, 0.8);
+@define-color surface_high rgba(43, 42, 39, 0.6);
+@define-color primary rgb(202, 200, 173);
 @define-color shadow @primary;

@@ -125,8 +125,8 @@ window#waybar {
 
 #custom-swaync {
 	/* font-weight: bold; */
-	margin-right : 0px;
 	padding : 0 8px 0 8px;
+	margin-right : 0.3rem;
 
 
 }
@@ -153,10 +153,6 @@ window#waybar {
 
 }
 
-
-#pulseaudio {
-	margin-right : 0.3rem;
-}
 
 #network {
 }
