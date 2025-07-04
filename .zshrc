@@ -35,7 +35,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
-export TERM=xterm-kitty
+export TERM=wezterm
 
 #if [[ -f "$HOME/.cache/wal/sequences" ]]; then
 #    (cat $HOME/.cache/wal/sequences)

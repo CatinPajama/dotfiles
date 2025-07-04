@@ -27,7 +27,7 @@
 
   #match:selected {
     color: @theme_selected_fg_color;
-    background: @theme_selected_bg_color;
+    background: @accent_bg_color;
     border-radius: 8px;
   }
   
@@ -65,7 +65,8 @@
     border-width: 1px;
     border-style: solid;
     margin-top: 15px;
-    background-color: rgba(0,0,0,0.7);
+    /* background-color: rgba(0,0,0,0.7); */
+    background: @window_bg_color;
     border-radius: 10px;
     padding: 0rem;
   }

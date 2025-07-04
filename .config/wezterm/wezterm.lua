@@ -9,7 +9,7 @@ config.line_height = 1.5
 config.color_schemes = {
 	["matugen"] = matugen,
 }
-config.color_scheme = "Kanagawa Dragon (Gogh)"
+config.color_scheme = "matugen"
 
 config.window_padding = {
 	left = 20,

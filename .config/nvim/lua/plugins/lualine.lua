@@ -98,11 +98,11 @@ return {
 
     local signs = {
       file = {
-        modified = '',
+        modified = ' ',
         not_saved = '󰉉 ',
-        readonly = '󰌾',
-        created = '',
-        unnamed = 'No Name',
+        readonly = '󰌾 ',
+        created = ' ',
+        unnamed = 'No Name ',
       },
       git = {
         added = ' ',

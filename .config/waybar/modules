@@ -18,7 +18,9 @@
 	    "kitty" : " ",
 	    "wezterm" : " ",
 	    "emacs" : " ",
-	    "com.stremio.stremio" : " 󰝆"
+	    "com.stremio.stremio" : " 󰝆",
+	    "zathura" : " 󰈙 ",
+	    "waypaper" : " 󰸉 "
 	},
 	"persistent-workspaces": {
 		"1": [],
